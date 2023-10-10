@@ -1,0 +1,16 @@
+{
+  "name": "prismatry",
+  "version": "1.0.0",
+  "description": "None",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon script.ts",
+    "seed:init": "ts-node ./src/seeds/init.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.4.2",
+    "@types/node": "^20.8.4"
+  }
+}
