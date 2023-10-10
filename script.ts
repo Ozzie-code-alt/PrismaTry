@@ -7,8 +7,12 @@ const prisma = new PrismaClient()
 
 async function main() {
     // some block of code here 
-   const user = await prisma.user.create({data: {name: "Kyle"}})
-    console.log(user)
+   const user = await prisma.user.create({data: {name: "Justin"}})
+   const finMany = await prisma.user.findMany()
+   console.log(user)
+   console.log(finMany)
+
+   
 }
 
 
