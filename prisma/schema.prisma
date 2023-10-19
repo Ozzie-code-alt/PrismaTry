@@ -13,4 +13,14 @@ datasource db {
 model User {
   id   Int    @id @default(autoincrement())
   name String
+  email String
+  isAdmin Boolean 
+  preferences Json
+  blob Bytes 
+}
+
+model Post{
+  rating Decimal
+  createdAt DateTime
+  updatedAt DateTime
 }
