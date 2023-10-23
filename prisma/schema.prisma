@@ -11,16 +11,24 @@ datasource db {
 }
 
 model User {
-  id   Int    @id @default(autoincrement())
-  name String
-  email String
-  isAdmin Boolean 
-  preferences Json
-  blob Bytes 
+  id           String  @id @default(uuid())
+  name         String
+  email        String
+  isAdmin      Boolean
+  preferences  Json // can add JSON Data type here JSON is not available in sqlite
+  blob         Bytes
+  // Post         Post[] // one to many realtion ship here as one user can have many posts
+  writtenPost  Post[]  @relation("WrittenPosts")
+  favoritePost Post[]  @relation("FavoritePosts")
 }
 
-model Post{
-  rating Decimal
-  createdAt DateTime
-  updatedAt DateTime
+model Post {
+  id            String   @id @default(uuid())
+  rating        Decimal
+  createdAt     DateTime
+  updatedAt     DateTime
+  author        User     @relation("WrittenPosts", fields: [authorId], references: [id]) // this is how u make relationships 
+  authorId      String
+  favoritedBy   User     @relation("FavoritePosts", fields: [favoritedById], references: [id]) // this is how u make relationships 
+  favoritedById String
 }
